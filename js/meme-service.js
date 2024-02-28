@@ -59,7 +59,8 @@ function addLine() {
 }
 
 function switchLine() {
-    if (gMeme.selectedLineIdx) gMeme.selectedLineIdx++
+    gMeme.selectedLineIdx++
+    if (gMeme.selectedLineIdx - 1 > gMeme.lines.length) gMeme.selectedLineIdx = 0
 }
 
 function deleteLine() {

@@ -20,11 +20,16 @@ function renderMeme() {
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, img.width, img.height)
         if (meme.lines.length) {
-            gCtx.fillStyle = meme.lines[lineIdx].color
-            gCtx.font = `bold ${meme.lines[lineIdx].size}px Arial`
-            gCtx.fillText(meme.lines[lineIdx].txt, 200, 100)
-        }
+            const lines = meme.lines
+            lines.forEach ((line) => {
+                gCtx.fillStyle = line.color,
+                gCtx.font = `bold ${line.size}px Arial`,
+                gCtx.fillText(line.txt, 200, 100)
+
+            }
+        )}
     }
+    console.log('gMeme:', gMeme)
 }
 
 function onSetLineTxt(txt) {
