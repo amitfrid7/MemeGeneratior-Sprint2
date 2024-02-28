@@ -1,0 +1,14 @@
+.editor form {
+    flex-direction: column;
+    
+    width: 50%;
+    height: 100%;
+}
+
+form input {
+    margin: 1em;
+}
+
+form .text-input {
+    width: 40%;
+}

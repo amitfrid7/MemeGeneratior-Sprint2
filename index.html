@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body onload="onInit()">
+    <h1>MemeGen</h1>
+    
+    <section class="editor">
+        <div class="canvas-container">
+            <canvas width="450" height="450">
+            </canvas>
+        </div>
+        <form action="" class="flex align-center">
+            <section class="editor-input">
+                <label for="text-input">Text: </label>
+                <input type="text" oninput="onSetLineTxt(this.value)" id="text-input" class="text-input">
+            </section>
+            
+            <section class="editor-input">
+                <label for="text-color">Text Color: </label>
+                <input type="color" name="text-color" id="text-color" oninput="setColor(this.value)">
+            </section>            
+        </form>
+    </section>
+
+    <section class="gallery">
+    </section>
+
+    <script src="js/util/storage-service.js"></script>
+    <script src="js/util/util-service.js"></script>
+    <script src="js/meme-service.js"></script>
+    <script src="js/gallery-controller.js"></script>
+    <script src="js/meme-controller.js"></script>
+</body>
+</html>

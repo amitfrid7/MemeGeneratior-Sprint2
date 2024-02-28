@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.editor {
+    display: flex;
+
+    margin: auto;
+    width: 80%;
+
+    border: 1px solid lightgrey;
+}
+
+.canvas-container {
+    width: auto;
+    background-color: lightsteelblue;
+    border: 1px solid lightgray;
+    margin: 10px auto;
+}
+
+canvas {
+    display: block;
+    background-color: white;
+}
