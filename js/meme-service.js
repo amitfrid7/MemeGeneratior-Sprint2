@@ -17,23 +17,74 @@ var gMeme = {
     ]
 }
 
-var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
+const STORAGE_KEY = 'memeDB'
+const gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 function getMeme() {
+    gMeme = loadFromStorage(STORAGE_KEY)
     return gMeme
 }
 
 function setLineTxt(txt) {
     const lineIdx = gMeme.selectedLineIdx
     gMeme.lines[lineIdx].txt = txt
+    _saveMemeToStorage()
 }
 
 function getImgById(id) {
     return gImgs.find(img => id === img.id)
 }
 
+function increaseFont() {
+    const lineIdx = gMeme.selectedLineIdx
+    gMeme.lines[lineIdx].size++
+    _saveMemeToStorage()
+}
+
+function decreaseFont() {
+    const lineIdx = gMeme.selectedLineIdx
+    gMeme.lines[lineIdx].size--
+    _saveMemeToStorage()
+}
+
+function addLine() {
+    gMeme.lines.push(
+        {
+        txt: 'New line',
+        size: 20,
+        color: 'black'
+    })
+    gMeme.selectedLineIdx++
+    saveToStorage(STORAGE_KEY, gMeme)
+}
+
+function switchLine() {
+    if (gMeme.selectedLineIdx) gMeme.selectedLineIdx++
+}
+
+function deleteLine() {
+    gMeme.selectedLineIdx = 0
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+    saveToStorage(STORAGE_KEY, gMeme)
+}
+
 function setColor(color) {
     const lineIdx = gMeme.selectedLineIdx
     gMeme.lines[lineIdx].color = color
-    renderMeme()
+    _saveMemeToStorage()
+}
+
+function imgSelect(id) {
+    const img = getImgById(id)
+    gMeme.selectedImgId = img.id
+    _saveMemeToStorage()
+}
+
+function downloadImg(elLink) {
+    const imgContent = gElCanvas.toDataURL('image/jpeg') // image/jpeg the default format
+    elLink.href = imgContent
+}
+
+function _saveMemeToStorage() {
+    saveToStorage(STORAGE_KEY, gMeme)
 }

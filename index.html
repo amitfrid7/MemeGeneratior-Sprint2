@@ -14,17 +14,35 @@
             <canvas width="450" height="450">
             </canvas>
         </div>
-        <form action="" class="flex align-center">
-            <section class="editor-input">
-                <label for="text-input">Text: </label>
-                <input type="text" oninput="onSetLineTxt(this.value)" id="text-input" class="text-input">
+        <main class="flex column align-center space-between">
+            <h2>Edit Meme</h2>
+            <section class="editor-inputs flex column align-center">
+                <label for="text-input">Text:
+                    <input type="text" oninput="onSetLineTxt(this.value)" id="text-input" class="text-input">
+                </label>
+                    
+                <label for="text-color">Text Color:
+                    <input type="color" name="text-color" id="text-color" oninput="onSetColor(this.value)">
+                </label>
+
+                <label for="increase-font">Increase Font
+                    <button id="increase-font" class="fa plus" onclick="onIncreaseFont()"></button>
+                </label>
+
+                <label for="decrease-font">Decrease Font
+                    <button id="decrease-font" class="fa minus" onclick="onDecreaseFont()"></button>
+                </label>
+
+                <button id="add-line" onclick="onAddLine()">Add Line</button>
+                <button id="switch-line" onclick="onSwitchLine()">Switch Line</button>
+                <button id="switch-line" onclick="onDeleteLine()">Delete Line</button>
             </section>
             
-            <section class="editor-input">
-                <label for="text-color">Text Color: </label>
-                <input type="color" name="text-color" id="text-color" oninput="setColor(this.value)">
-            </section>            
-        </form>
+            <section class="action-btns">
+                <a href="#" class="btn" onclick="downloadImg(this)" download="my-meme.jpg">Download Meme</a>
+                <a href="#" class="btn" onclick="">Share Meme</a>
+            </section>
+        </main>
     </section>
 
     <section class="gallery">
