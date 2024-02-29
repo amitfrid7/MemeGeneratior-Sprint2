@@ -34,7 +34,8 @@ var gMeme = {
 
 function getMeme() {
     gMeme = loadFromStorage(STORAGE_KEY)
-    if (!gMeme.length) gMeme = createMeme()
+    if (!gMeme) gMeme = createMeme()
+    _saveMemeToStorage()
     return gMeme
 }
 
