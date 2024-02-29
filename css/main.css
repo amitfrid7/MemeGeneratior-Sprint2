@@ -3,7 +3,7 @@
 @import url(basic/helpers.css);
 
 /* Components */
-@import url(components/form.css);
+@import url(components/editor.css);
 @import url(components/gallery.css);
 
 /* Setup */
