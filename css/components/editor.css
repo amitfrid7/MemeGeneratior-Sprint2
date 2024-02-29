@@ -1,6 +1,7 @@
 .editor main {    
     width: 50%;
     height: auto;
+
 }
 
 .editor-inputs > * {
@@ -8,15 +9,76 @@
 }
 
 main .text-input {
-    width: 40%;
+    width: 50%;
 }
 
-a {
+.action-btns a {
     text-decoration: none;
-    font-size: 1.2em;
+    font-size: 1.4em;
     font-weight: 600;
+    color: whitesmoke;
+    transition: 0.4s;
+}
+
+.action-btns a:hover {
+    color:  rgb(229,9,20);
 }
 
 .action-btns {
     width: 100%;
+    padding: 1em;
+}
+
+.line-actions-container p {
+    margin: 0.5em;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.line-actions > * {
+    outline: 1px whitesmoke solid;
+    color: whitesmoke;
+
+    padding: 0.5em;
+    margin: 0.5em;
+
+    font-family: bebas;
+    font-size: 1em;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+
+    background: none;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.line-actions > *:hover {
+    transition: 0.4s;
+    color:  rgb(229,9,20);
+    outline-color: rgb(229,9,20);
+}
+
+.size-button {
+    color: whitesmoke;
+    font-family: bebas;
+    font-size: 1em;
+    letter-spacing: 0.1em;
+
+
+    background: none;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.size-button:hover {
+    transition: 0.2s;
+    color:  rgb(229,9,20);
+    outline-color: rgb(229,9,20);
+}
+
+.size-button span {
+    font-size: 1.3em;
+    font-weight: 600;
 }

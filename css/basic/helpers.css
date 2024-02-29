@@ -21,3 +21,7 @@
 .space-evenly {
     justify-content: space-evenly;
 }
+
+.clear-list {
+    list-style: none;
+}

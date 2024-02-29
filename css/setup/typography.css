@@ -3,6 +3,11 @@
     src: url(/fonts/fa/fa-brands-400.ttf);
 }
 
+@font-face {
+    font-family: bebas;
+    src: url(/fonts/BebeasNeue/BebasNeue-Regular.ttf);
+}
+
 .fa::before {
     font-family: fa;
 }

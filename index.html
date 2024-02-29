@@ -8,10 +8,23 @@
 </head>
 <body onload="onInit()">
     <h1>MemeGen</h1>
+    <nav class="main-nav">
+        <ul class="clear-list flex align-center space-evenly">
+            <li>
+                <a href="gallery">Gallery</a>
+            </li>
+            <li>
+                <a href="editor">Editor</a>
+            </li>
+            <li>
+                <a href="about">About</a>
+            </li>
+        </ul>
+    </nav>
     
     <section class="editor">
         <div class="canvas-container">
-            <canvas width="450" height="450">
+            <canvas width="500" height="500">
             </canvas>
         </div>
         <main class="flex column align-center space-between">
@@ -25,17 +38,19 @@
                     <input type="color" name="text-color" id="text-color" oninput="onSetColor(this.value)">
                 </label>
 
-                <label for="increase-font">Increase Font
-                    <button id="increase-font" onclick="onIncreaseFont()">+</button>
-                </label>
 
-                <label for="decrease-font">Decrease Font
-                    <button id="decrease-font" onclick="onDecreaseFont()">-</button>
-                </label>
+                <button class="size-button" onclick="onIncreaseFont()">Increase Font <span>+</span></button>
 
-                <button id="add-line" onclick="onAddLine()">Add Line</button>
-                <button id="switch-line" onclick="onSwitchLine()">Switch Line</button>
-                <button id="switch-line" onclick="onDeleteLine()">Delete Line</button>
+
+                <button class="size-button" onclick="onDecreaseFont()">Decrease Font <span>-</span></button>
+
+                <div class="line-actions-container">
+                    <p>Line actions</p>
+                    <div class="line-actions">                    <button id="add-line" onclick="onAddLine()">Add Line</button>
+                        <button id="switch-line" onclick="onSwitchLine()">Switch Line</button>
+                        <button id="switch-line" onclick="onDeleteLine()">Delete Line</button>
+                    </div>
+                </div>
             </section>
             
             <section class="action-btns flex space-evenly">

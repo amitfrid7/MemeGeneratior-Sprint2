@@ -1,13 +1,22 @@
 .gallery {
     width: 80%;
+    columns: auto;
+    margin: auto;
+    padding: 1em;
 }
 
 .gallery img {
     height: 150px;
     width: 150px;
-
+    
     margin: auto;
     padding: 10px;
+    border-radius: 15px;
 
     cursor: pointer;
+}
+
+.gallery img:hover {
+    scale: 1.1;
+    transition: 0.5s;
 }
