@@ -6,7 +6,7 @@ const STORAGE_KEY = 'memeDB'
 const gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 var gImgs = [
-    { id: 1, url: 'img/meme-imgs (square)/1.jpg', keywords: ['funny'] },
+    { id: 1, url: './img/meme-imgs (square)/1.jpg', keywords: ['funny'] },
     { id: 2, url: 'img/meme-imgs (square)/2.jpg', keywords: ['funny'] },
     { id: 3, url: 'img/meme-imgs (square)/3.jpg', keywords: ['funny'] },
     { id: 4, url: 'img/meme-imgs (square)/4.jpg', keywords: ['funny'] },
@@ -34,7 +34,7 @@ var gMeme = {
 
 function getMeme() {
     gMeme = loadFromStorage(STORAGE_KEY)
-    if (!gMeme) gMeme = createMeme()
+    if (!gMeme.length) gMeme = createMeme()
     return gMeme
 }
 
