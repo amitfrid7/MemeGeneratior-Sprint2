@@ -34,7 +34,16 @@ var gMeme = {
 
 function getMeme() {
     gMeme = loadFromStorage(STORAGE_KEY)
+    if (!gMeme) gMeme = createMeme()
     return gMeme
+}
+
+function createMeme() {
+    return {
+        selectedImgId: 1,
+        selectedLineIdx: 0,
+        lines: []
+    }
 }
 
 function setLineTxt(txt) {
@@ -124,7 +133,7 @@ function isLineClicked(clickedPos) {
         var distance = Math.sqrt((line.pos.x - clickedPos.x) ** 2 + (line.pos.y - clickedPos.y) ** 2)
         if (distance <= line.size * line.txt.length) {
             gMeme.selectedLineIdx = idx
-        } 
+        }
     })
     const lineIdx = gMeme.selectedLineIdx
     const line = gMeme.lines[lineIdx]
