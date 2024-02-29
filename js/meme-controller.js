@@ -110,7 +110,7 @@ function onDown(ev) {
     if (!isLineClicked(gStartPos)) return
 
     setLineDrag(true)
-    //Save the pos we start from
+
     
     document.body.style.cursor = 'grabbing'
 }

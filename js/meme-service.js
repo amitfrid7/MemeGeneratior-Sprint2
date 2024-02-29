@@ -1,7 +1,7 @@
 'use strict'
 
 let gStartPos
-var isRectDrawn = false
+let gChosenLine
 const STORAGE_KEY = 'memeDB'
 const gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
@@ -118,17 +118,35 @@ function setLineDrag(isDrag) {
 
 function isLineClicked(clickedPos) {
     if (!gMeme.lines.length) return
+
+    //TRY:
+    gMeme.lines.map((line, idx) => {
+        var distance = Math.sqrt((line.pos.x - clickedPos.x) ** 2 + (line.pos.y - clickedPos.y) ** 2)
+        if (distance <= line.size * line.txt.length) {
+            gMeme.selectedLineIdx = idx
+        } 
+    })
     const lineIdx = gMeme.selectedLineIdx
     const line = gMeme.lines[lineIdx]
     const { pos } = line
 
-    // Calc the distance between two dots
-    const distance = Math.sqrt((pos.x - clickedPos.x) ** 2 + (pos.y - clickedPos.y) ** 2)
 
-    //If its smaller then the radius of the circle we are inside
     drawRect(pos.x - line.txt.length * line.size / 4, pos.y - line.size, line.size * line.txt.length, line.size * 1.5)
 
-    return (distance <= line.size * line.txt.length * 1.5)
+    setChosenLine(line)
+    return true
+
+    //WORKS:
+    // const lineIdx = gMeme.selectedLineIdx
+    // const line = gMeme.lines[lineIdx]
+    // const { pos } = line
+
+    // // Calc the distance between two dots
+    // const distance = Math.sqrt((pos.x - clickedPos.x) ** 2 + (pos.y - clickedPos.y) ** 2)
+
+    // //If its smaller then the radius of the circle we are inside
+    // drawRect(pos.x - line.txt.length * line.size / 4, pos.y - line.size, line.size * line.txt.length, line.size * 1.5)
+    // return (distance <= line.size * line.txt.length)
 }
 
 function moveLine(dx, dy) {
@@ -137,6 +155,11 @@ function moveLine(dx, dy) {
     gMeme.lines[lineIdx].pos.x += dx
     gMeme.lines[lineIdx].pos.y += dy
     _saveMemeToStorage()
+}
+
+function setChosenLine(line) {
+    gChosenLine = line
+    return gChosenLine
 }
 
 function drawRect(x, y, sizeX, sizeY) {
