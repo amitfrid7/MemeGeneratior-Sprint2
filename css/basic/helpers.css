@@ -6,12 +6,12 @@
     flex-direction: column;
 }
 
-.align-center {
-    align-items: center;
-}
-
 .justify-center {
     justify-content: center;
+}
+
+.align-center {
+    align-items: center;
 }
 
 .space-between {
@@ -20,6 +20,10 @@
 
 .space-evenly {
     justify-content: space-evenly;
+}
+
+.hidden {
+    display: none;
 }
 
 .clear-list {

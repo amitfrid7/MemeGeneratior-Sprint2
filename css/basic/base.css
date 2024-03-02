@@ -9,10 +9,10 @@ body {
 
 h1 {
     font-size: 3em;
-    color: rgb(229,9,20);
+    color: var(--primary-1);
 }
 .main-nav {
-    width: 50%;
+    width: 80%;
     margin: auto;
     padding: 0.6em;
 }
@@ -21,19 +21,24 @@ h1 {
     padding: 0;
 }
 
-.main-nav a {
-    text-decoration: none;
+.main-nav button {
+
+    border: none;
+    cursor: pointer;
+    font-family: "Bebas Neue", sans-serif;
+
     font-size: 1.2em;
     font-weight: 600;
     letter-spacing: 0.15em;
 
     color: whitesmoke;
-    background-color: rgb(229,9,20);
+    background-color: var(--primary-1);
     padding: 0.5em 2em;
     border-radius: 0.3em;
+
 }
 
-.main-nav a:hover {
+.main-nav button:hover {
     opacity: 0.8;
     transition: 0.4s;
 }
@@ -42,7 +47,7 @@ h1 {
     display: flex;
 
     margin: auto;
-    width: 80%;
+    width: 60%;
 
 }
 

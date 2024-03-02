@@ -9,23 +9,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
-<body onload="onInit()">
+<body onload="onInit()" class="bebas">
     <h1>MemeGen</h1>
     <nav class="main-nav">
-        <ul class="clear-list flex align-center space-evenly">
+        <ul class="main-nav-list clear-list flex align-center space-evenly">
             <li>
-                <a href="gallery">Gallery</a>
+                <button onclick="openGallery()">Gallery</button>
             </li>
             <li>
-                <a href="editor">Editor</a>
+                <button onclick="openEditor()">Editor</button>
             </li>
             <li>
-                <a href="about">About</a>
+                <button onclick="openAbout()">About</button>
             </li>
         </ul>
+
     </nav>
+    <button class="toggle-menu-btn" onclick="toggleMenu()" type="button">☰</button>
     
-    <section class="editor">
+    <section class="editor flex justify-center">
         <div class="canvas-container">
             <canvas width="500" height="500">
             </canvas>
@@ -49,7 +51,8 @@
 
                 <div class="line-actions-container">
                     <p>Line actions</p>
-                    <div class="line-actions">                    <button id="add-line" onclick="onAddLine()">Add Line</button>
+                    <div class="line-actions">
+                        <button id="add-line" onclick="onAddLine()">Add Line</button>
                         <button id="switch-line" onclick="onSwitchLine()">Switch Line</button>
                         <button id="switch-line" onclick="onDeleteLine()">Delete Line</button>
                     </div>
@@ -58,12 +61,18 @@
             
             <section class="action-btns flex space-evenly">
                 <a href="#" class="btn" onclick="downloadImg(this)" download="my-meme.jpg">Download</a>
-                <a href="#" class="btn" onclick="">Share</a>
-            </section>
+                <a href="#" class="btn" onclick="onUploadImg()">Share</a>
+                <label for="input-file" class="btn">Updload
+                    <input type="file" id="input-file" class="btn" name="image" onchange="onImgInput(event)" accept="image/*" />
+                </label>
+                </section>
         </main>
     </section>
 
     <section class="gallery">
+    </section>
+
+    <section class="about">
     </section>
 
     <script src="js/util/storage-service.js"></script>

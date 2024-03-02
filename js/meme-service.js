@@ -77,8 +77,8 @@ function addLine(pos = { x: 200, y: 100 }) {
     gMeme.lines.push(
         {
             txt: 'New line',
-            size: 20,
-            color: 'black',
+            size: 24,
+            color: 'white',
             pos,
             isDrag: false
         })
@@ -129,7 +129,7 @@ function setLineDrag(isDrag) {
 function isLineClicked(clickedPos) {
     if (!gMeme.lines.length) return
 
-    //TRY:
+    //TEST:
     gMeme.lines.map((line, idx) => {
         var distance = Math.sqrt((line.pos.x - clickedPos.x) ** 2 + (line.pos.y - clickedPos.y) ** 2)
         if (distance <= line.size * line.txt.length) {
@@ -141,7 +141,7 @@ function isLineClicked(clickedPos) {
     const { pos } = line
 
 
-    drawRect(pos.x - line.txt.length * line.size / 4, pos.y - line.size, line.size * line.txt.length, line.size * 1.5)
+    drawRect(pos.x - line.txt.length * line.size / 5, pos.y - line.size, line.size * line.txt.length, line.size * 1.5)
 
     setChosenLine(line)
     return true
@@ -168,7 +168,6 @@ function moveLine(dx, dy) {
 }
 
 function setChosenLine(line) {
-    console.log('line:', line)
     gChosenLine = line
     return gChosenLine
 }
@@ -176,7 +175,7 @@ function setChosenLine(line) {
 function drawRect(x, y, sizeX, sizeY) {
     gCtx.beginPath()
 
-    gCtx.strokeStyle = 'lightblue'
+    gCtx.strokeStyle = 'black'
     gCtx.lineWidth = 1
     gCtx.strokeRect(x, y, sizeX, sizeY)
 }
