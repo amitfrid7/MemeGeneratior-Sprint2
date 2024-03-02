@@ -6,24 +6,24 @@ const STORAGE_KEY = 'memeDB'
 const gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 var gImgs = [
-    { id: 1, url: './img/meme-imgs (square)/1.jpg', keywords: ['funny'] },
-    { id: 2, url: 'img/meme-imgs (square)/2.jpg', keywords: ['funny'] },
-    { id: 3, url: 'img/meme-imgs (square)/3.jpg', keywords: ['funny'] },
-    { id: 4, url: 'img/meme-imgs (square)/4.jpg', keywords: ['funny'] },
-    { id: 5, url: 'img/meme-imgs (square)/5.jpg', keywords: ['funny'] },
-    { id: 6, url: 'img/meme-imgs (square)/6.jpg', keywords: ['funny'] },
-    { id: 7, url: 'img/meme-imgs (square)/7.jpg', keywords: ['funny'] },
-    { id: 8, url: 'img/meme-imgs (square)/8.jpg', keywords: ['funny'] },
-    { id: 9, url: 'img/meme-imgs (square)/9.jpg', keywords: ['funny'] },
-    { id: 10, url: 'img/meme-imgs (square)/10.jpg', keywords: ['funny'] },
-    { id: 11, url: 'img/meme-imgs (square)/11.jpg', keywords: ['funny'] },
-    { id: 12, url: 'img/meme-imgs (square)/12.jpg', keywords: ['funny'] },
-    { id: 13, url: 'img/meme-imgs (square)/13.jpg', keywords: ['funny'] },
-    { id: 14, url: 'img/meme-imgs (square)/14.jpg', keywords: ['funny'] },
-    { id: 15, url: 'img/meme-imgs (square)/15.jpg', keywords: ['funny'] },
-    { id: 16, url: 'img/meme-imgs (square)/16.jpg', keywords: ['funny'] },
-    { id: 17, url: 'img/meme-imgs (square)/17.jpg', keywords: ['funny'] },
-    { id: 18, url: 'img/meme-imgs (square)/18.jpg', keywords: ['funny'] },
+    { id: 1, url: './img/meme-imgs (square)/1.jpg' },
+    { id: 2, url: 'img/meme-imgs (square)/2.jpg' },
+    { id: 3, url: 'img/meme-imgs (square)/3.jpg' },
+    { id: 4, url: 'img/meme-imgs (square)/4.jpg' },
+    { id: 5, url: 'img/meme-imgs (square)/5.jpg' },
+    { id: 6, url: 'img/meme-imgs (square)/6.jpg' },
+    { id: 7, url: 'img/meme-imgs (square)/7.jpg' },
+    { id: 8, url: 'img/meme-imgs (square)/8.jpg' },
+    { id: 9, url: 'img/meme-imgs (square)/9.jpg' },
+    { id: 10, url: 'img/meme-imgs (square)/10.jpg' },
+    { id: 11, url: 'img/meme-imgs (square)/11.jpg' },
+    { id: 12, url: 'img/meme-imgs (square)/12.jpg' },
+    { id: 13, url: 'img/meme-imgs (square)/13.jpg' },
+    { id: 14, url: 'img/meme-imgs (square)/14.jpg' },
+    { id: 15, url: 'img/meme-imgs (square)/15.jpg' },
+    { id: 16, url: 'img/meme-imgs (square)/16.jpg' },
+    { id: 17, url: 'img/meme-imgs (square)/17.jpg' },
+    { id: 18, url: 'img/meme-imgs (square)/18.jpg' },
 ]
 
 var gMeme = {
@@ -168,6 +168,7 @@ function moveLine(dx, dy) {
 }
 
 function setChosenLine(line) {
+    console.log('line:', line)
     gChosenLine = line
     return gChosenLine
 }

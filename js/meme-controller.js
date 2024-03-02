@@ -84,6 +84,15 @@ function onDeleteLine() {
     renderMeme()
 }
 
+function onChoosingLine() {
+    if (gChosenLine) {
+        const txtInput = document.querySelector('.text-input')
+        const colorInput = document.querySelector('.text-color')
+        txtInput.placeholder = gChosenLine.txt
+        colorInput.value = gChosenLine.color
+    }
+}
+
 function getEvPos(ev) {
     ev.preventDefault()         // Prevent triggering the mouse events
     let pos = {
@@ -110,13 +119,15 @@ function onDown(ev) {
     if (!isLineClicked(gStartPos)) return
 
     setLineDrag(true)
-
+    onChoosingLine()
     
     document.body.style.cursor = 'grabbing'
 }
 
 function onMove(ev) {
-    const { isDrag } = getLine()
+    const line = getLine()
+    if (!line) return
+    const { isDrag } = line
     if (!isDrag) return
 
     const pos = getEvPos(ev)
