@@ -11,6 +11,8 @@ function renderGallery() {
 }
 
 function onImgSelect(id) {
+    const elEditor = document.querySelector('.editor')
+    elEditor.classList.remove('hidden')
     imgSelect(id)
     renderMeme()
 }

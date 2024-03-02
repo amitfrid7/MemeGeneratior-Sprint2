@@ -1,0 +1,91 @@
+@media (max-width: 800px) {
+    .editor {
+        flex-direction: column;
+    }
+
+    .toggle-menu-btn {
+        position: absolute;
+        top: 120px;
+        right: 45%;
+        background-color: #ffffff0e;
+        height: 40px;
+        width: 60px;
+        border-radius: 10px;
+        border: #f2f2f20c 0.5px solid;
+        font-size: 20px;
+        color: #FFFFFF;
+    }
+
+
+    .main-nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100dvh;
+        width: 40%;
+        background: rgb(255 255 255 / 90%);
+        border-inline-start: 1px solid #ccc;
+    
+        transform: translateX(100%);
+    
+        transition: transform 0.6s, box-shadow 0.6s;
+      }
+    
+      body.menu-open .main-nav {
+        transform: translateX(0);
+        box-shadow: -4px 0px 20px rgb(0 0 0 / 30%);
+      }
+    
+      .main-nav .main-nav-list {
+        flex-direction: column;
+        min-width: 40%;
+      }
+    
+      .main-nav .main-nav-list > li {
+        border-bottom: 1px solid #ccc;
+      }
+    
+      .main-nav .main-nav-list button {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        padding: 6px 10px;
+      }
+    
+      .main-nav .main-nav-list button:hover {
+        opacity: 0.6;
+      }
+
+      .main-screen {
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+        pointer-events: none;
+        opacity: 0;
+      
+        transition: opacity 0.6s;
+      }
+      
+      body.menu-open {
+        opacity: 0.9;
+        pointer-events: auto;
+      }
+
+      .action-btns .btn {
+        text-decoration: none;
+        font-size: 1em;
+        font-weight: 600;
+        color: whitesmoke;
+        padding: 1em;
+    }
+
+}
+
+@media (width > 800px) {
+
+    .toggle-menu-btn {
+        display: none;
+      }
+
+}

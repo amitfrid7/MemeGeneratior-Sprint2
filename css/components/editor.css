@@ -1,6 +1,9 @@
+.editor {
+    width: 60%;
+}
+
 .editor main {    
     width: 50%;
-    height: auto;
 
 }
 
@@ -9,10 +12,10 @@
 }
 
 main .text-input {
-    width: 50%;
+    width: 60%;
 }
 
-.action-btns a {
+.action-btns .btn {
     text-decoration: none;
     font-size: 1.4em;
     font-weight: 600;
@@ -20,8 +23,16 @@ main .text-input {
     transition: 0.4s;
 }
 
-.action-btns a:hover {
-    color:  rgb(229,9,20);
+.action-btns .btn:hover {
+    color:  var(--primary-1);
+}
+
+.action-btns label {
+    cursor: pointer;
+}
+
+input[type="file"] {
+    display: none;
 }
 
 .action-btns {
@@ -42,7 +53,7 @@ main .text-input {
     padding: 0.5em;
     margin: 0.5em;
 
-    font-family: bebas;
+    font-family: "Bebas Neue", sans-serif;
     font-size: 1em;
     font-weight: 600;
     letter-spacing: 0.1em;
@@ -55,15 +66,15 @@ main .text-input {
 
 .line-actions > *:hover {
     transition: 0.4s;
-    color:  rgb(229,9,20);
-    outline-color: rgb(229,9,20);
+    color:  var(--primary-1);
+    outline-color: var(--primary-1);
 }
 
 .size-button {
-    color: whitesmoke;
-    font-family: bebas;
+    font-family: "Bebas Neue", sans-serif;
     font-size: 1em;
     letter-spacing: 0.1em;
+    color: whitesmoke;
 
 
     background: none;
@@ -74,8 +85,8 @@ main .text-input {
 
 .size-button:hover {
     transition: 0.2s;
-    color:  rgb(229,9,20);
-    outline-color: rgb(229,9,20);
+    color:  var(--primary-1);
+    outline-color: var(--primary-1);
 }
 
 .size-button span {

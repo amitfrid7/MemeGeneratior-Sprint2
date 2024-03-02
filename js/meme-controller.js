@@ -28,9 +28,13 @@ function renderMeme() {
         if (meme.lines.length) {
             const lines = meme.lines
             lines.forEach((line) => {
+                console.log('line:', line)
                 gCtx.fillStyle = line.color,
-                gCtx.font = `bold ${line.size}px Arial`,
-                gCtx.fillText(line.txt, line.pos.x, line.pos.y)
+                gCtx.font = `${line.size}px Impact`,
+                gCtx.strokeStyle = 'black',
+                gCtx.lineWidth = 1,
+                gCtx.fillText(line.txt, line.pos.x, line.pos.y),
+                gCtx.strokeText(line.txt, line.pos.x, line.pos.y)
             }
             )
         }
@@ -90,6 +94,7 @@ function onChoosingLine() {
         const colorInput = document.querySelector('.text-color')
         txtInput.placeholder = gChosenLine.txt
         colorInput.value = gChosenLine.color
+        document.body.style.cursor = 'grab'
     }
 }
 
@@ -120,7 +125,7 @@ function onDown(ev) {
 
     setLineDrag(true)
     onChoosingLine()
-    
+
     document.body.style.cursor = 'grabbing'
 }
 
@@ -131,7 +136,7 @@ function onMove(ev) {
     if (!isDrag) return
 
     const pos = getEvPos(ev)
-    
+
     // Calc the delta, the diff we moved
     var dx = pos.x - gStartPos.x
     var dy = pos.y - gStartPos.y
@@ -146,5 +151,41 @@ function onMove(ev) {
 
 function onUp() {
     setLineDrag(false)
-    document.body.style.cursor = 'grab'
+    document.body.style.cursor = 'auto'
+}
+
+function addHidden(selector) {
+    var strClass = '.'
+    strClass += selector 
+    const el = document.querySelector(strClass)
+    el.classList.add('hidden')
+}
+
+function removeHidden(selector) {
+    var strClass = '.'
+    strClass += selector 
+    const el = document.querySelector(strClass)
+    el.classList.remove('hidden')
+}
+
+function openGallery() {
+    addHidden('editor')
+    addHidden('about')
+    removeHidden('gallery')
+}
+
+function openEditor() {
+    removeHidden('editor')
+    removeHidden('gallery')
+    addHidden('about')
+}
+
+function openAbout() {
+    addHidden('gallery')
+    addHidden('editor')
+    removeHidden('about')
+}
+
+function toggleMenu() {
+    document.body.classList.toggle('menu-open')
 }

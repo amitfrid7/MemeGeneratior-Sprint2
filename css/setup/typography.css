@@ -1,21 +1,11 @@
-@font-face {
-    font-family: fa;
-    src: url(/fonts/fa/fa-brands-400.ttf);
+.bebas {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
-@font-face {
-    font-family: bebas, sans-serif;
+
+/* @font-face {
+    font-family: bebas;
     src: url(/fonts/BebeasNeue/BebasNeue-Regular.ttf);
-}
-
-.fa::before {
-    font-family: fa;
-}
-
-.fa.plus::before {
-    content: "\2b";
-}
-
-.fa.minus::before {
-    content: "\f068";
-}
+} */
