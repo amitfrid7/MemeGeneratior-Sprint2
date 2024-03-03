@@ -9,7 +9,6 @@
     height: 250px;
     width: 250px;
     
-    margin: auto;
     padding: 10px;
     border-radius: 15px;
 
@@ -19,4 +18,50 @@
 .gallery img:hover {
     scale: 1.1;
     transition: 0.5s;
+}
+
+.saved-gallery {
+    width: 80%;
+    columns: auto;
+    margin: auto;
+}
+
+.saved-gallery img {
+    height: 250px;
+    width: 250px;
+    
+    margin: auto;
+    padding: 10px;
+    border-radius: 15px;
+
+    cursor: pointer;
+}
+
+.saved-gallery img:hover {
+    scale: 1.1;
+    transition: 0.5s;
+}
+
+.saved-gallery button {
+    outline: 1px whitesmoke solid;
+    color: whitesmoke;
+    
+    padding: 0.5em;
+    margin-bottom: 1em;
+
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1em;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    
+    background: none;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.saved-gallery button:hover {
+    transition: 0.4s;
+    color:  var(--primary-1);
+    outline-color: var(--primary-1);
 }

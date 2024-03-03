@@ -3,7 +3,9 @@
 let gStartPos
 let gChosenLine
 const STORAGE_KEY = 'memeDB'
-const gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
+const SAVED_KEY = 'savedDB'
+
+var gSavedMemes = []
 
 var gImgs = [
     { id: 1, url: './img/meme-imgs (square)/1.jpg' },
@@ -29,13 +31,12 @@ var gImgs = [
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
-    lines: []
+    lines: [],
+    id: makeId()
 }
 
 function getMeme() {
-    gMeme = loadFromStorage(STORAGE_KEY)
     if (!gMeme) gMeme = createMeme()
-    _saveMemeToStorage()
     return gMeme
 }
 
@@ -43,17 +44,20 @@ function createMeme() {
     return {
         selectedImgId: 1,
         selectedLineIdx: 0,
-        lines: []
+        lines: [],
+        id: makeId()
     }
 }
 
 function setLineTxt(txt) {
     const lineIdx = gMeme.selectedLineIdx
     var txtInput = document.querySelector('.text-input')
+
     if (!gMeme.lines.length) {
         gMeme.selectedLineIdx = 0
         addLine()
     }
+
     gMeme.lines[lineIdx].txt = txt
     txtInput = txt
 
@@ -66,13 +70,13 @@ function getImgById(id) {
 
 function increaseFont() {
     const lineIdx = gMeme.selectedLineIdx
-    gMeme.lines[lineIdx].size++
+    gMeme.lines[lineIdx].size += 2
     _saveMemeToStorage()
 }
 
 function decreaseFont() {
     const lineIdx = gMeme.selectedLineIdx
-    gMeme.lines[lineIdx].size--
+    gMeme.lines[lineIdx].size -= 2
     _saveMemeToStorage()
 }
 
@@ -91,19 +95,30 @@ function addLine(pos = { x: 200, y: 100 }) {
 function switchLine() {
     gMeme.selectedLineIdx++
     if (gMeme.selectedLineIdx > gMeme.lines.length) gMeme.selectedLineIdx = 0
-    console.log('gMeme.selectedLineIdx:', gMeme.selectedLineIdx)
 }
 
 function deleteLine() {
     gMeme.selectedLineIdx = 0
     gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+
     clearPlaceHolders()
     saveToStorage(STORAGE_KEY, gMeme)
+}
+
+function saveMeme() {
+    gSavedMemes.push(gMeme)
+    saveToStorage(SAVED_KEY, gSavedMemes)
+}
+
+function clearSavedMemes() {
+    gSavedMemes.splice(0)
+    saveToStorage(SAVED_KEY, gSavedMemes)
 }
 
 function clearPlaceHolders() {
     let txtInput = document.querySelector('.text-input')
     let colorInput = document.querySelector('.text-color')
+
     txtInput.placeholder = ''
     colorInput.value = 'black'
 }
@@ -128,11 +143,12 @@ function downloadImg(elLink) {
 function getLine() {
     const lineIdx = gMeme.selectedLineIdx
     if (!gMeme.lines.length) return
-    else return gMeme.lines[lineIdx]
+    return gMeme.lines[lineIdx]
 }
 
 function setLineDrag(isDrag) {
     if (!gMeme.lines.length) return
+
     const lineIdx = gMeme.selectedLineIdx
     gMeme.lines[lineIdx].isDrag = isDrag
 }
@@ -140,7 +156,6 @@ function setLineDrag(isDrag) {
 function isLineClicked(clickedPos) {
     if (!gMeme.lines.length) return
 
-    //TEST:
     gMeme.lines.map((line, idx) => {
         var distance = Math.sqrt((line.pos.x - clickedPos.x) ** 2 + (line.pos.y - clickedPos.y) ** 2)
         if (distance <= line.size * line.txt.length) {
@@ -153,18 +168,6 @@ function isLineClicked(clickedPos) {
 
     setChosenLine(line)
     return true
-
-    //WORKS:
-    // const lineIdx = gMeme.selectedLineIdx
-    // const line = gMeme.lines[lineIdx]
-    // const { pos } = line
-
-    // // Calc the distance between two dots
-    // const distance = Math.sqrt((pos.x - clickedPos.x) ** 2 + (pos.y - clickedPos.y) ** 2)
-
-    // //If its smaller then the radius of the circle we are inside
-    // drawRect(pos.x - line.txt.length * line.size / 4, pos.y - line.size, line.size * line.txt.length, line.size * 1.5)
-    // return (distance <= line.size * line.txt.length)
 }
 
 function getChosenLine() {
@@ -176,6 +179,7 @@ function moveLine(dx, dy) {
 
     gMeme.lines[lineIdx].pos.x += dx
     gMeme.lines[lineIdx].pos.y += dy
+    
     _saveMemeToStorage()
 }
 

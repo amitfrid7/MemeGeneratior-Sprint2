@@ -20,10 +20,9 @@
                 <button onclick="openEditor()">Editor</button>
             </li>
             <li>
-                <button onclick="openAbout()">Saved</button>
+                <button onclick="openSaved()">Saved</button>
             </li>
         </ul>
-
     </nav>
     <button class="toggle-menu-btn" onclick="toggleMenu()" type="button">☰</button>
     
@@ -32,8 +31,10 @@
             <canvas width="500" height="500">
             </canvas>
         </div>
+
         <main class="flex column align-center space-between">
             <h2>Edit Meme</h2>
+            
             <section class="editor-inputs flex column align-center">
                 <label for="text-input">Text:
                     <input type="text" oninput="onSetLineTxt(this.value)" id="text-input" class="text-input">
@@ -64,6 +65,7 @@
                 <label for="input-file" class="btn">Updload
                     <input type="file" id="input-file" class="btn" name="image" onchange="onImgInput(event)" accept="image/*" />
                 </label>
+                <button class="action-btn" onclick="onSaveMeme()">Save</button>
                 </section>
         </main>
     </section>
@@ -71,7 +73,9 @@
     <section class="gallery">
     </section>
 
-    <section class="about">
+    <section class="saved-gallery">
+        <button onclick="onClearSavedMemes()">Clear Saved Memes</button>
+        <article class="saved-gallery-container"></article>
     </section>
 
     <script src="js/util/storage-service.js"></script>

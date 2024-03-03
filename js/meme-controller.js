@@ -10,11 +10,11 @@ function onInit() {
 
     renderMeme()
     renderGallery()
+    renderSavedMemes()
     setLineDrag(false)
 
     addMouseListeners()
     addTouchListeners()
-
 }
 
 function renderMeme() {
@@ -32,6 +32,16 @@ function renderMeme() {
             })
         }
     }
+}
+
+function renderSavedMemes() {
+    const memes = loadFromStorage(SAVED_KEY)
+
+    var srtHtmls = memes.map(meme => `
+        <img src="img/meme-imgs (square)/${meme.selectedImgId}.jpg" onclick="onImgSelect(${meme.selectedImgId})">
+        `)
+
+    document.querySelector('.saved-gallery-container').innerHTML = srtHtmls.join('')
 }
 
 function renderLine(line) {
@@ -90,6 +100,15 @@ function onDeleteLine() {
     renderMeme()
 }
 
+function onSaveMeme() {
+    saveMeme()
+}
+
+function onClearSavedMemes() {
+    clearSavedMemes()
+    renderSavedMemes()
+}
+
 function onChoosingLine() {
     const line = getChosenLine()
     if (!line) return
@@ -98,6 +117,7 @@ function onChoosingLine() {
     let colorInput = document.querySelector('.text-color')
     txtInput.placeholder = line.txt
     colorInput.placeholder = line.color
+    
     drawRect(line.pos.x, line.pos.y - line.size, line.size * line.txt.length / 2 * 1.15, line.size + 10)
     document.body.style.cursor = 'grab'
 
@@ -175,20 +195,21 @@ function removeHidden(selector) {
 
 function openGallery() {
     addHidden('editor')
-    addHidden('about')
+    addHidden('saved-gallery')
     removeHidden('gallery')
 }
 
 function openEditor() {
     removeHidden('editor')
     removeHidden('gallery')
-    addHidden('about')
+    addHidden('saved-gallery')
 }
 
-function openAbout() {
+function openSaved() {
     addHidden('gallery')
     addHidden('editor')
-    removeHidden('about')
+    removeHidden('saved-gallery')
+    renderSavedMemes()
 }
 
 function toggleMenu() {

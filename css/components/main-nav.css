@@ -1,9 +1,14 @@
+.main-nav {
+    width: 60%;
+    margin: auto;
+    padding: 0.5em;
+}
+
 .main-nav ul {
     padding: 0;
 }
 
 .main-nav button {
-
     border: none;
     cursor: pointer;
     font-family: "Bebas Neue", sans-serif;
@@ -16,16 +21,10 @@
     background-color: var(--primary-1);
     padding: 0.5em 2em;
     border-radius: 0.3em;
-
+    
 }
 
 .main-nav button:hover {
     opacity: 0.8;
     transition: 0.4s;
-}
-
-.main-nav {
-    width: 80%;
-    margin: auto;
-    padding: 0.6em;
 }
