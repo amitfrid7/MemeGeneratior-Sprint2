@@ -1,0 +1,10 @@
+canvas {
+    display: block;
+    background-color: white;
+}
+
+.canvas-container {
+    width: auto;
+    background-color: rgba(176, 196, 222, 0);
+    margin: 10px auto;
+}

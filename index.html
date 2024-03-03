@@ -20,7 +20,7 @@
                 <button onclick="openEditor()">Editor</button>
             </li>
             <li>
-                <button onclick="openAbout()">About</button>
+                <button onclick="openAbout()">Saved</button>
             </li>
         </ul>
 
@@ -43,11 +43,10 @@
                     <input type="color" name="text-color" id="text-color" class="text-color" oninput="onSetColor(this.value)">
                 </label>
 
-
-                <button class="size-button" onclick="onIncreaseFont()">Increase Font <span>+</span></button>
-
-
-                <button class="size-button" onclick="onDecreaseFont()">Decrease Font <span>-</span></button>
+                <div class="size-buttons">
+                    <button class="size-button" onclick="onIncreaseFont()">A+</button>
+                    <button class="size-button" onclick="onDecreaseFont()">A-</button>
+                </div>
 
                 <div class="line-actions-container">
                     <p>Line actions</p>

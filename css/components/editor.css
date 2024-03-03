@@ -1,10 +1,15 @@
 .editor {
-    width: 60%;
+    width: 75%;
+    margin: auto;
 }
 
-.editor main {    
-    width: 50%;
+.editor h2 {
+    margin: .3em;
+}
 
+
+.editor main {    
+    width: 60%;
 }
 
 .editor-inputs > * {
@@ -27,10 +32,6 @@ main .text-input {
     color:  var(--primary-1);
 }
 
-.action-btns label {
-    cursor: pointer;
-}
-
 input[type="file"] {
     display: none;
 }
@@ -40,24 +41,18 @@ input[type="file"] {
     padding: 1em;
 }
 
-.line-actions-container p {
-    margin: 0.5em;
-    font-size: 1.2em;
-    font-weight: 600;
-}
-
 .line-actions > * {
     outline: 1px whitesmoke solid;
     color: whitesmoke;
-
+    
     padding: 0.5em;
-    margin: 0.5em;
+    margin: 0.3em;
 
     font-family: "Bebas Neue", sans-serif;
     font-size: 1em;
     font-weight: 600;
     letter-spacing: 0.1em;
-
+    
     background: none;
     border: none;
     box-shadow: none;
@@ -72,11 +67,14 @@ input[type="file"] {
 
 .size-button {
     font-family: "Bebas Neue", sans-serif;
-    font-size: 1em;
+    font-size: 1.5em;
     letter-spacing: 0.1em;
+
+    margin: 0 .3em;
+
     color: whitesmoke;
-
-
+    outline: 1px whitesmoke solid;
+    
     background: none;
     border: none;
     box-shadow: none;
@@ -84,12 +82,7 @@ input[type="file"] {
 }
 
 .size-button:hover {
-    transition: 0.2s;
+    transition: 0.3s;
     color:  var(--primary-1);
     outline-color: var(--primary-1);
-}
-
-.size-button span {
-    font-size: 1.3em;
-    font-weight: 600;
 }

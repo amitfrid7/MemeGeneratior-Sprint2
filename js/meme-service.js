@@ -49,11 +49,14 @@ function createMeme() {
 
 function setLineTxt(txt) {
     const lineIdx = gMeme.selectedLineIdx
+    var txtInput = document.querySelector('.text-input')
     if (!gMeme.lines.length) {
         gMeme.selectedLineIdx = 0
         addLine()
     }
     gMeme.lines[lineIdx].txt = txt
+    txtInput = txt
+
     _saveMemeToStorage()
 }
 
@@ -78,7 +81,7 @@ function addLine(pos = { x: 200, y: 100 }) {
         {
             txt: 'New line',
             size: 24,
-            color: 'white',
+            color: '#ffffff',
             pos,
             isDrag: false
         })
@@ -94,7 +97,15 @@ function switchLine() {
 function deleteLine() {
     gMeme.selectedLineIdx = 0
     gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+    clearPlaceHolders()
     saveToStorage(STORAGE_KEY, gMeme)
+}
+
+function clearPlaceHolders() {
+    let txtInput = document.querySelector('.text-input')
+    let colorInput = document.querySelector('.text-color')
+    txtInput.placeholder = ''
+    colorInput.value = 'black'
 }
 
 function setColor(color) {
@@ -140,9 +151,6 @@ function isLineClicked(clickedPos) {
     const line = gMeme.lines[lineIdx]
     const { pos } = line
 
-
-    drawRect(pos.x - line.txt.length * line.size / 5, pos.y - line.size, line.size * line.txt.length, line.size * 1.5)
-
     setChosenLine(line)
     return true
 
@@ -157,6 +165,10 @@ function isLineClicked(clickedPos) {
     // //If its smaller then the radius of the circle we are inside
     // drawRect(pos.x - line.txt.length * line.size / 4, pos.y - line.size, line.size * line.txt.length, line.size * 1.5)
     // return (distance <= line.size * line.txt.length)
+}
+
+function getChosenLine() {
+    return gChosenLine
 }
 
 function moveLine(dx, dy) {

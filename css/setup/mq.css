@@ -1,18 +1,25 @@
 @media (max-width: 800px) {
     .editor {
         flex-direction: column;
+        align-items: center;
+    }
+
+    .editor main {
+      width: 80%;
     }
 
     .toggle-menu-btn {
         position: absolute;
-        top: 120px;
+        top: 110px;
         right: 45%;
-        background-color: #ffffff0e;
+        font-size: 20px;
+
         height: 40px;
         width: 60px;
+
+        background-color: #ffffff0e;
         border-radius: 10px;
         border: #f2f2f20c 0.5px solid;
-        font-size: 20px;
         color: #FFFFFF;
     }
 
@@ -73,13 +80,9 @@
       }
 
       .action-btns .btn {
-        text-decoration: none;
         font-size: 1em;
-        font-weight: 600;
-        color: whitesmoke;
         padding: 1em;
     }
-
 }
 
 @media (width > 800px) {

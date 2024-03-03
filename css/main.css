@@ -5,6 +5,8 @@
 /* Components */
 @import url(components/editor.css);
 @import url(components/gallery.css);
+@import url(components/main-nav.css);
+@import url(components/canvas.css);
 
 /* Setup */
 @import url(setup/vars.css);

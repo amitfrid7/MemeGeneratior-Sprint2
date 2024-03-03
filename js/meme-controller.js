@@ -28,17 +28,19 @@ function renderMeme() {
         if (meme.lines.length) {
             const lines = meme.lines
             lines.forEach((line) => {
-                console.log('line:', line)
-                gCtx.fillStyle = line.color,
-                gCtx.font = `${line.size}px Impact`,
-                gCtx.strokeStyle = 'black',
-                gCtx.lineWidth = 1,
-                gCtx.fillText(line.txt, line.pos.x, line.pos.y),
-                gCtx.strokeText(line.txt, line.pos.x, line.pos.y)
-            }
-            )
+                renderLine(line)
+            })
         }
     }
+}
+
+function renderLine(line) {
+    gCtx.fillStyle = line.color,
+    gCtx.font = `${line.size}px Impact`,
+    gCtx.strokeStyle = 'black',
+    gCtx.lineWidth = 1,
+    gCtx.fillText(line.txt, line.pos.x, line.pos.y),
+    gCtx.strokeText(line.txt, line.pos.x, line.pos.y)
 }
 
 function addMouseListeners() {
@@ -89,13 +91,16 @@ function onDeleteLine() {
 }
 
 function onChoosingLine() {
-    if (gChosenLine) {
-        const txtInput = document.querySelector('.text-input')
-        const colorInput = document.querySelector('.text-color')
-        txtInput.placeholder = gChosenLine.txt
-        colorInput.value = gChosenLine.color
-        document.body.style.cursor = 'grab'
-    }
+    const line = getChosenLine()
+    if (!line) return
+
+    let txtInput = document.querySelector('.text-input')
+    let colorInput = document.querySelector('.text-color')
+    txtInput.placeholder = line.txt
+    colorInput.placeholder = line.color
+    drawRect(line.pos.x, line.pos.y - line.size, line.size * line.txt.length / 2 * 1.15, line.size + 10)
+    document.body.style.cursor = 'grab'
+
 }
 
 function getEvPos(ev) {
@@ -156,14 +161,14 @@ function onUp() {
 
 function addHidden(selector) {
     var strClass = '.'
-    strClass += selector 
+    strClass += selector
     const el = document.querySelector(strClass)
     el.classList.add('hidden')
 }
 
 function removeHidden(selector) {
     var strClass = '.'
-    strClass += selector 
+    strClass += selector
     const el = document.querySelector(strClass)
     el.classList.remove('hidden')
 }
