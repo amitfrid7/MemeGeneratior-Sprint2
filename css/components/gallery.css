@@ -1,5 +1,5 @@
 .gallery {
-    width: 80%;
+    width: 95%;
     columns: auto;
     margin: auto;
     padding: 1em;
@@ -26,12 +26,11 @@
     margin: auto;
 }
 
-.saved-gallery img {
-    height: 250px;
-    width: 250px;
+.saved-gallery div {
+    height: 200px;
+    width: 200px;
     
     margin: auto;
-    padding: 10px;
     border-radius: 15px;
 
     cursor: pointer;

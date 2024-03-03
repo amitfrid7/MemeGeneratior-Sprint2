@@ -36,6 +36,7 @@ var gMeme = {
 }
 
 function getMeme() {
+    gMeme = loadFromStorage(STORAGE_KEY)
     if (!gMeme) gMeme = createMeme()
     return gMeme
 }
@@ -179,7 +180,6 @@ function moveLine(dx, dy) {
 
     gMeme.lines[lineIdx].pos.x += dx
     gMeme.lines[lineIdx].pos.y += dy
-    
     _saveMemeToStorage()
 }
 

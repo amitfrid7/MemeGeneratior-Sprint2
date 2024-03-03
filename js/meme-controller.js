@@ -37,11 +37,36 @@ function renderMeme() {
 function renderSavedMemes() {
     const memes = loadFromStorage(SAVED_KEY)
 
-    var srtHtmls = memes.map(meme => `
-        <img src="img/meme-imgs (square)/${meme.selectedImgId}.jpg" onclick="onImgSelect(${meme.selectedImgId})">
-        `)
+    var strHtmls = memes.map(meme =>
+        `<canvas width="200" height="200" id="${meme.id}">
+        </canvas>`
+    )
 
-    document.querySelector('.saved-gallery-container').innerHTML = srtHtmls.join('')
+    document.querySelector('.saved-gallery-container').innerHTML = strHtmls.join('')
+
+    memes.forEach(meme => {
+        var ElCanvas = document.getElementById(`${meme.id}`)
+        var ctx = ElCanvas.getContext('2d')
+
+        const memeImg = getImgById(meme.selectedImgId)
+        const img = new Image()
+
+        img.src = memeImg.url
+        img.onload = () => {
+            ctx.drawImage(img, 0, 0, 200, 200)
+            if (meme.lines.length) {
+                const lines = meme.lines
+                lines.forEach((line) => {
+                    ctx.fillStyle = line.color,
+                    ctx.font = `${line.size}px Impact`,
+                    ctx.strokeStyle = 'black',
+                    ctx.lineWidth = 1,
+                    ctx.fillText(line.txt, line.pos.x/2.5, line.pos.y/2.5),
+                    ctx.strokeText(line.txt, line.pos.x/2.5, line.pos.y/2.5)
+                })
+            }
+        }
+    })
 }
 
 function renderLine(line) {
@@ -117,7 +142,7 @@ function onChoosingLine() {
     let colorInput = document.querySelector('.text-color')
     txtInput.placeholder = line.txt
     colorInput.placeholder = line.color
-    
+
     drawRect(line.pos.x, line.pos.y - line.size, line.size * line.txt.length / 2 * 1.15, line.size + 10)
     document.body.style.cursor = 'grab'
 
@@ -147,6 +172,7 @@ function getEvPos(ev) {
 function onDown(ev) {
     gStartPos = getEvPos(ev)
     if (!isLineClicked(gStartPos)) return
+    if (!gChosenLine) clearPlaceHolders()
 
     setLineDrag(true)
     onChoosingLine()
